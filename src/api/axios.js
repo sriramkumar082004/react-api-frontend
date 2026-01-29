@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+const rawBaseURL = import.meta.env.VITE_API_URL || '';
+// Handle cases where the URL might be a comma-separated list
+const baseURL = rawBaseURL.split(',')[0].trim() || 'http://localhost:8000';
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || process.env.VITE_API_URL,
+  baseURL,
 });
 
 // Add a request interceptor to include the JWT token
