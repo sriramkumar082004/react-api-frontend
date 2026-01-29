@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
+    console.log('Attempting login to:', api.defaults.baseURL + '/auth/login');
     try {
       // This backend expects x-www-form-urlencoded (username/password)
       const formData = new URLSearchParams();
