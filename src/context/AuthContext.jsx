@@ -43,8 +43,10 @@ export const AuthProvider = ({ children }) => {
       toast.success('Login successful!');
       return true;
     } catch (error) {
-      console.error(error);
-      toast.error(error.response?.data?.detail || 'Login failed');
+      console.error('DEBUG - Login Error:', error);
+      const targetUrl = api.defaults.baseURL + '/auth/login';
+      const errorMessage = error.response?.data?.detail || error.message || 'Unknown error';
+      toast.error(`Login Error: ${errorMessage}\nTarget: ${targetUrl}`, { duration: 6000 });
       return false;
     }
   };
