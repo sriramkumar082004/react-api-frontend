@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const rawBaseURL = import.meta.env.VITE_API_URL || '';
-// Handle cases where the URL might be a comma-separated list
-const baseURL = rawBaseURL.split(',')[0].trim() || 'http://localhost:8000';
+// Clean the URL: Remove commas, handle fallbacks, and trim whitespace
+const baseURL = (rawBaseURL.split(',')[0] || 'http://localhost:8000/api/v1').trim().replace(/\/$/, "");
 
 const api = axios.create({
   baseURL,
