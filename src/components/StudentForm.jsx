@@ -7,14 +7,13 @@ const StudentForm = ({ isOpen, onClose, onSubmit, initialData, isSubmitting }) =
     name: '',
     age: '',
     course: '',
-    email: '',
   });
 
   useEffect(() => {
     if (initialData) {
       setFormData(initialData);
     } else {
-      setFormData({ name: '', age: '', course: '', email: '' });
+      setFormData({ name: '', age: '', course: '' });
     }
   }, [initialData, isOpen]);
 
@@ -76,19 +75,7 @@ const StudentForm = ({ isOpen, onClose, onSubmit, initialData, isSubmitting }) =
                      />
                    </div>
 
-                   <div>
-                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                     <input
-                       type="email"
-                       name="email"
-                       id="email"
-                       required
-                       value={formData.email}
-                       onChange={handleChange}
-                       className="block w-full rounded-lg border-gray-300 border shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm py-2.5 px-3"
-                       placeholder="e.g. john@example.com"
-                     />
-                   </div>
+
 
                    <div className="grid grid-cols-2 gap-4">
                       <div>

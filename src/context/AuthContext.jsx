@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      // Backend expects x-www-form-urlencoded with username and password
+      // This backend expects x-www-form-urlencoded (username/password)
       const formData = new URLSearchParams();
       formData.append('username', email);
       formData.append('password', password);

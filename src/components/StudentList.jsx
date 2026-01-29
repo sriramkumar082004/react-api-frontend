@@ -67,7 +67,6 @@ const StudentList = ({ students, onEdit, onDelete }) => {
                       </div>
                       <div className="ml-4">
                         <div className="text-sm font-bold text-slate-900 tracking-tight">{student.name}</div>
-                        <div className="text-[11px] font-medium text-slate-400">{student.email}</div>
                       </div>
                     </div>
                   </td>

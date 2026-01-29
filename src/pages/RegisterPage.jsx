@@ -38,10 +38,10 @@ const RegisterPage = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center gap-3 mb-8">
-               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-primary-400 flex items-center justify-center shadow-lg shadow-primary-500/30">
+               <div className="w-10 h-10 rounded-xl bg-linear-to-br from-primary-600 to-primary-400 flex items-center justify-center shadow-lg shadow-primary-500/30">
                   <span className="text-white font-bold text-xl">S</span>
                </div>
-               <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-700 to-secondary-600 tracking-tight">StudentSys</span>
+               <span className="text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-primary-700 to-secondary-600 tracking-tight">StudentSys</span>
             </div>
             
             <h2 className="mt-2 text-3xl font-bold text-slate-800">
@@ -145,7 +145,7 @@ const RegisterPage = () => {
       <div className="hidden lg:block relative w-0 flex-1 bg-slate-900 overflow-hidden">
         <div className="absolute inset-0 h-full w-full object-cover">
            {/* Abstract Background */}
-           <div className="absolute inset-0 bg-gradient-to-bl from-secondary-900 via-slate-900 to-primary-900" />
+           <div className="absolute inset-0 bg-linear-to-br from-primary-900 via-slate-900 to-secondary-900" />
            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80')] opacity-20 bg-cover bg-center mix-blend-overlay" />
            
            {/* Decorative elements */}
@@ -155,7 +155,7 @@ const RegisterPage = () => {
         
         <div className="absolute bottom-0 left-0 right-0 p-20 z-10 text-white">
           <blockquote className="space-y-4">
-             <div className="h-1 w-20 bg-gradient-to-r from-secondary-400 to-primary-400 rounded-full mb-6"></div>
+             <div className="h-1 w-20 bg-linear-to-r from-primary-400 to-secondary-400 rounded-full mb-6"></div>
              <p className="text-2xl font-light leading-relaxed opacity-90">
                 &ldquo;Join thousands of educational institutions using StudentSys to streamline their operations and focus on what matters most - education.&rdquo;
              </p>

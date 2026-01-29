@@ -38,10 +38,10 @@ const LoginPage = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center gap-3 mb-8">
-               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-primary-400 flex items-center justify-center shadow-lg shadow-primary-500/30">
+               <div className="w-10 h-10 rounded-xl bg-linear-to-br from-primary-600 to-primary-400 flex items-center justify-center shadow-lg shadow-primary-500/30">
                   <span className="text-white font-bold text-xl">S</span>
                </div>
-               <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-700 to-secondary-600 tracking-tight">StudentSys</span>
+               <span className="text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-primary-700 to-secondary-600 tracking-tight">StudentSys</span>
             </div>
             
             <h2 className="mt-2 text-3xl font-bold text-slate-800">
