@@ -26,7 +26,16 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     console.log('Attempting login to:', api.defaults.baseURL + '/auth/login');
     try {
-      const response = await api.post('/auth/login', { email, password });
+      // Use URLSearchParams for application/x-www-form-urlencoded format
+      const formData = new URLSearchParams();
+      formData.append('username', email);
+      formData.append('password', password);
+
+      const response = await api.post('/auth/login', formData, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      });
       const { access_token } = response.data;
       
       localStorage.setItem('token', access_token);
