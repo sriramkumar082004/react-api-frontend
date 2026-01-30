@@ -35,9 +35,20 @@ export const AuthProvider = ({ children }) => {
       return true;
     } catch (error) {
       console.error('DEBUG - Login Error:', error);
-      const targetUrl = api.defaults.baseURL + '/auth/login';
-      const errorMessage = error.response?.data?.detail || error.message || 'Unknown error';
-      toast.error(`Login Error: ${errorMessage}\nTarget: ${targetUrl}`, { duration: 6000 });
+      let errorMessage = 'Unknown error';
+      if (error.response?.data?.detail) {
+        if (typeof error.response.data.detail === 'string') {
+          errorMessage = error.response.data.detail;
+        } else if (Array.isArray(error.response.data.detail)) {
+          errorMessage = error.response.data.detail.map(err => `${err.msg} (${err.loc.join('.')})`).join(', ');
+        } else {
+          errorMessage = JSON.stringify(error.response.data.detail);
+        }
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
+      toast.error(`Login Error: ${errorMessage}`, { duration: 6000 });
       return false;
     }
   };
