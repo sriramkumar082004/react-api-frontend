@@ -24,9 +24,12 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
-    console.log('Attempting login to:', api.defaults.baseURL + '/auth/login');
+    const loginUrl = (api.defaults.baseURL || '') + '/auth/login';
+    console.log('--- LOGIN ATTEMPT ---');
+    console.log('URL:', loginUrl);
+    console.log('Payload:', { username: email, password: '***' });
+    
     try {
-      // Use URLSearchParams for application/x-www-form-urlencoded format
       const formData = new URLSearchParams();
       formData.append('username', email);
       formData.append('password', password);
@@ -36,6 +39,8 @@ export const AuthProvider = ({ children }) => {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       });
+      
+      console.log('Login Response Status:', response.status);
       const { access_token } = response.data;
       
       localStorage.setItem('token', access_token);
@@ -43,7 +48,11 @@ export const AuthProvider = ({ children }) => {
       toast.success('Login successful!');
       return true;
     } catch (error) {
-      console.error('DEBUG - Login Error:', error);
+      console.error('--- LOGIN ERROR ---');
+      console.log('Status Code:', error.response?.status);
+      console.log('Error Data:', error.response?.data);
+      console.log('Error Message:', error.message);
+      
       let errorMessage = 'Unknown error';
       if (error.response?.data?.detail) {
         if (typeof error.response.data.detail === 'string') {
@@ -55,6 +64,10 @@ export const AuthProvider = ({ children }) => {
         }
       } else if (error.message) {
         errorMessage = error.message;
+      }
+      
+      if (error.code === 'ERR_NETWORK') {
+        errorMessage = 'Network Error: Cannot connect to backend. Please check your internet or if the backend server is running and CORS is allowed.';
       }
       
       toast.error(`Login Error: ${errorMessage}`, { duration: 6000 });
